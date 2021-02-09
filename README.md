@@ -27,6 +27,6 @@
 <h2>Este projeto foi feito para consolidar os aprendizados de manipulação de DOM e uso de canvas!</h2>
 <h2>E para que o jogo fosse possivel em 2 dias fiz uso da lib <a href="https://brm.io/matter-js/">Matter.js</a>!</h2>
 
-<img href="./img/Trown Sleep (3).jpg">
+<img href="./img/Capture.PNG">
 
 <h1 align="center">PS: ABEIXE O VOLUME DO NAVEGADOR!</h1>
