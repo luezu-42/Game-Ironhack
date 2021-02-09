@@ -29,4 +29,4 @@
 
 <img src="./img/Capture.PNG">
 
-<h1 align="center">PS: ABEIXE O VOLUME DO NAVEGADOR!</h1>
+<h1 align="center">PS: DEMINUA O VOLUME DO NAVEGADOR!</h1>
