@@ -9,7 +9,7 @@
 <body>
     <embed id="music" src="./music/Blue Boi.mp3" hidden="true" autostart="true" volume="50" >
 
-    <script src="../src/matter.js"></script>
+    <script src="./src/matter.js"></script>
     <script>
 
         let engine = Matter.Engine.create();
@@ -23,9 +23,17 @@
             }
         });
 
-        let ground = Matter.Bodies.rectangle(850, 700, 700, 20, {isStatic: true});
-        let groundA = Matter.Bodies.rectangle(590, 530, 10, 200, {isStatic: true});
-        let groundB = Matter.Bodies.rectangle(850, 700, 700, 20, {isStatic: true});
+        let ground = Matter.Bodies.rectangle(1440, 300, 200, 20, {isStatic: true});
+
+        let groundC = Matter.Bodies.rectangle(1500, 250, 20, 100, {isStatic: true});
+
+        let groundD = Matter.Bodies.rectangle(1435, 190, 20, 100, {isStatic: true});
+
+        let groundE = Matter.Bodies.rectangle(1550, 100, 20, 100, {isStatic: true});
+
+        let groundA = Matter.Bodies.rectangle(250, 500, 100, 20, {isStatic: true});
+
+        let groundB = Matter.Bodies.rectangle(320, 500, 20, 80, {isStatic: true});
 
         let mouse = Matter.Mouse.create(render.canvas);
         let mouseConstraint = Matter.MouseConstraint.create(engine, {
@@ -37,21 +45,17 @@
 
         render.mouse = mouse;
 
-        let ball = Matter.Bodies.circle(800, 200, 20);
+        let ball = Matter.Bodies.circle(800, 600, 20);
         let sling = Matter.Constraint.create({
-            pointA: {x:800, y:200},
+            pointA: {x:800, y:600},
             bodyB: ball,
             stiffness: 0.05
         });
 
-        let polyA = Matter.Bodies.polygon(880, 690, 8, 30);
-        let polyB = Matter.Bodies.polygon(850, 690, 8, 30);
-        let polyC = Matter.Bodies.polygon(820, 690, 8, 30);
-        let polyD = Matter.Bodies.polygon(790, 690, 8, 30);
-        let polyE = Matter.Bodies.polygon(860, 600, 8, 30);
-        let polyF = Matter.Bodies.polygon(820, 600, 8, 30);
-        let polyG = Matter.Bodies.polygon(765, 550, 8, 30);
-        let polyH = Matter.Bodies.polygon(910, 600, 8, 30);
+
+        let boxA = Matter.Bodies.rectangle(250, 300, 40, 50);
+
+        let boxB = Matter.Bodies.rectangle(1409, 250, 30, 120);
 
         let firing = false;
         Matter.Events.on(mouseConstraint, 'enddrag', function(e){
@@ -59,8 +63,8 @@
         });
 
         Matter.Events.on(engine, 'afterUpdate', function(){
-            if(firing && Math.abs(ball.position.x-800)<20 && Math.abs(ball.position.y-200)<20){
-            ball = Matter.Bodies.circle(800, 200, 20);
+            if(firing && Math.abs(ball.position.x-800)<20 && Math.abs(ball.position.y-600)<20){
+            ball = Matter.Bodies.circle(800, 600, 20);
             Matter.World.add(engine.world,ball);
             sling.bodyB = ball;
             firing = false;
@@ -69,18 +73,15 @@
         
         
 
-        Matter.World.add(engine.world,[ground,groundA,groundB,polyA,polyB,polyC,polyD,polyE,polyF,polyG,polyH,ball,sling,mouseConstraint]);
+        Matter.World.add(engine.world,[boxA,boxB,groundE,groundD,groundC,groundB,groundA,ground,ball,sling,mouseConstraint]);
         Matter.Engine.run(engine);
         Matter.Render.run(render);
+        console.log(boxA.position.y)
 
-        let j = 0;
 
         setInterval(function(){
-            if(polyA.position.y > 800 && polyB.position.y > 800 &&
-            polyC.position.y > 800 && polyD.position.y > 800 &&
-            polyE.position.y > 800 && polyF.position.y > 800 &&
-            polyG.position.y > 800 && polyH.position.y > 800){
-                location.replace("./final.html")
+            if(boxA.position.y > 650 && boxB.position.y > 650){
+                location.replace("./stage3.html")
             }
         } ,1000)
     </script>
